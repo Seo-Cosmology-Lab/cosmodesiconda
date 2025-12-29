@@ -1,6 +1,6 @@
 # export MINICONDA=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 # miniforge solves fast and works well with conda-forge
-export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/24.5.0-0/Miniforge3-$(uname)-$(uname -m).sh
+export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/25.3.0-1/Miniforge3-$(uname)-$(uname -m).sh
 #export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/24.1.2-0/Miniforge3-$(uname)-$(uname -m).sh
 export GRP=
 export COSMOINSTALL="pip-pkgs.sh classy-pkgs.sh planck-pkgs.sh cobaya-pkgs.sh desilike-pkgs.sh desipipe-pkgs.sh"

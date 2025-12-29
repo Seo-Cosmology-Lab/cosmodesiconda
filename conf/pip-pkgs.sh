@@ -35,10 +35,11 @@ $PYTHON -m pip install --no-deps interpax equinox jaxtyping blackjax fastprogres
 $PYTHON -m pip install optax
 $PYTHON -m pip install SciencePlots
 $PYTHON -m pip install numpyro
-$PYTHON -m pip install "diffrax==0.5.0"
+$PYTHON -m pip install diffrax distrax
 $PYTHON -m pip install jaxdecomp
 # Just for docs
 $PYTHON -m pip install sphinx sphinx-rtd-theme
+$PYTHON -m pip install ipympl
 
 if [ $? != 0 ]; then
     echo "ERROR installing pip packages; exiting"
