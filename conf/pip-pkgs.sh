@@ -2,13 +2,14 @@
 echo Installing pip packages at $(date)
 
 PYTHON=$(which python)
-$PYTHON -m pip install hdf5plugin
-$PYTHON -m pip install 'ipywidgets==8.0.4'
 # see https://docs.nersc.gov/development/languages/python/parallel-python/
 # also https://docs.nersc.gov/development/languages/python/using-python-perlmutter/
 MPICC=$MPICC $PYTHON -m pip install --force --no-cache-dir --no-binary=mpi4py mpi4py
+HDF5_MPI=ON CC=cc $PYTHON -m pip install -v --force-reinstall --no-cache-dir --no-binary=h5py --no-build-isolation --no-deps h5py
+$PYTHON -m pip install hdf5plugin
 MPICC=$MPICCPFFT $PYTHON -m pip install --no-cache-dir git+https://github.com/MP-Gadget/pfft-python
 MPICC=$MPICCPFFT $PYTHON -m pip install --no-cache-dir git+https://github.com/MP-Gadget/pmesh
+$PYTHON -m pip install 'ipywidgets==8.0.4'
 #$PYTHON -m pip install --no-cache-dir git+https://github.com/adematti/getdist
 $PYTHON -m pip install --no-cache-dir getdist
 # install healpy with pip, as sometimes conda yields WARNING: version mismatch between CFITSIO header (as it reinstalls cfitsio)
@@ -41,6 +42,7 @@ $PYTHON -m pip install jaxdecomp
 # Just for docs
 $PYTHON -m pip install sphinx sphinx-rtd-theme
 $PYTHON -m pip install ipympl
+
 
 if [ $? != 0 ]; then
     echo "ERROR installing pip packages; exiting"

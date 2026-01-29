@@ -12,7 +12,6 @@ conda install --copy --yes -c conda-forge \
     matplotlib \
     cfitsio \
     fitsio \
-    h5py \
     cython \
     pyfftw \
     sympy \
@@ -34,8 +33,8 @@ conda install --copy --yes -c conda-forge \
 && mplrc="$CONDADIR/lib/python$PYVERSION/site-packages/matplotlib/mpl-data/matplotlibrc"; \
     cat ${mplrc} | sed -e "s#^backend.*#backend : TkAgg#" > ${mplrc}.tmp; \
     mv ${mplrc}.tmp ${mplrc} \
-&& conda clean --yes --all
-
+&& conda clean --yes --all && conda uninstall hdf5 --yes
+# conda uninstall hdf5 needed because of astropy, I believe
 if [ $? != 0 ]; then
     echo "ERROR installing conda packages; exiting"
     exit 1

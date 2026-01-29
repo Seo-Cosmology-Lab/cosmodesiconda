@@ -1,3 +1,5 @@
+"""To run on a GPU node."""
+
 def test_torch():
 
     import random
