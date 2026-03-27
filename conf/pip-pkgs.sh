@@ -5,10 +5,9 @@ PYTHON=$(which python)
 # see https://docs.nersc.gov/development/languages/python/parallel-python/
 # also https://docs.nersc.gov/development/languages/python/using-python-perlmutter/
 MPICC=$MPICC $PYTHON -m pip install --force --no-cache-dir --no-binary=mpi4py mpi4py
-HDF5_MPI=ON CC=cc $PYTHON -m pip install -v --force-reinstall --no-cache-dir --no-binary=h5py --no-build-isolation --no-deps h5py
-$PYTHON -m pip install hdf5plugin
-MPICC=$MPICCPFFT $PYTHON -m pip install --no-cache-dir git+https://github.com/MP-Gadget/pfft-python
-MPICC=$MPICCPFFT $PYTHON -m pip install --no-cache-dir git+https://github.com/MP-Gadget/pmesh
+
+MPICC=$MPICCPFFT CFLAGS="-Wno-error=int-conversion" $PYTHON -m pip install --no-cache-dir git+https://github.com/MP-Gadget/pfft-python
+MPICC=$MPICCPFFT $PYTHON -m pip install --no-cache-dir --no-binary=pmesh git+https://github.com/MP-Gadget/pmesh
 $PYTHON -m pip install 'ipywidgets==8.0.4'
 #$PYTHON -m pip install --no-cache-dir git+https://github.com/adematti/getdist
 $PYTHON -m pip install --no-cache-dir getdist
@@ -27,17 +26,29 @@ $PYTHON -m pip install parallel_numpy_rng
 #$PYTHON -m pip install --upgrade "jax[cuda12]"
 #$PYTHON -m pip install "tensorflow==2.18.0" gast
 #$PYTHON -m pip install "torch==2.6.0" pytorch-lightning
-
-$PYTHON -m pip install --upgrade "jax[cuda12]"
-$PYTHON -m pip install torch torchvision torchaudio pytorch-lightning --index-url https://download.pytorch.org/whl/cu129
+$PYTHON -m pip install --upgrade "jax[cuda12]==0.9.1"
+$PYTHON -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu129
+$PYTHON -m pip install pytorch-lightning
 $PYTHON -m pip install tensorflow gast
+$PYTHON -m pip install pyccl
+# Collecting h5py<3.15.0,>=3.11.0 (from tensorflow)
+# conda uninstall hdf5 needed because of astropy, I believe
+conda uninstall hdf5 --yes
+HDF5_MPI=ON CC=cc $PYTHON -m pip install -v --force-reinstall --no-cache-dir --no-binary=h5py --no-build-isolation --no-deps h5py
+$PYTHON -m pip install hdf5plugin
 
-$PYTHON -m pip install flax
-$PYTHON -m pip install --no-deps interpax equinox jaxtyping blackjax fastprogress jaxopt typeguard
+$PYTHON -m pip install flax lineax
+$PYTHON -m pip install blackjax
+$PYTHON -m pip install --no-deps interpax equinox jaxtyping
+# https://github.com/jax-ml/jax/issues/29042
+$PYTHON -m pip install nvidia-cublas-cu12==12.9.0.13
+
+
 #$PYTHON -m pip install torch==2.0.1+cu117 torchvision==0.15.2+cu117 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu117
 #$PYTHON -m pip install "tensorflow==2.11.0"
 #$PYTHON -m pip install "jax[cuda11_cudnn82]==0.4.7" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html  # this will update cuda libraries installed by torch, but torch does not seem to complain
 #$PYTHON -m pip install "orbax-checkpoint=0.4.7"
+#$PYTHON -m pip install uvloop  # for orbax
 #$PYTHON -m pip install "flax==0.7.2"
 #$PYTHON -m pip install "chex==v0.1.7"  # higher versions required
 $PYTHON -m pip install optax

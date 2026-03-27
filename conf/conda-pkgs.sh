@@ -7,7 +7,7 @@ echo condadir is $CONDADIR
 conda install --copy --yes -c conda-forge \
     future \
     'libblas=*=*mkl' \
-    numpy \
+    'numpy>=2.0.0' \
     'scipy>=1.5.0' \
     matplotlib \
     cfitsio \
@@ -16,7 +16,7 @@ conda install --copy --yes -c conda-forge \
     pyfftw \
     sympy \
     numexpr \
-    'astropy>=4.0.0' \
+    'astropy>=7.0.0' \
     ipython \
     jupyterlab \
     wurlitzer \
@@ -27,14 +27,12 @@ conda install --copy --yes -c conda-forge \
     pytest \
     scikit-learn \
     tabulate \
-    gdb \
-    htop \
+    pyccl \
     namaster \
 && mplrc="$CONDADIR/lib/python$PYVERSION/site-packages/matplotlib/mpl-data/matplotlibrc"; \
     cat ${mplrc} | sed -e "s#^backend.*#backend : TkAgg#" > ${mplrc}.tmp; \
     mv ${mplrc}.tmp ${mplrc} \
-&& conda clean --yes --all && conda uninstall hdf5 --yes
-# conda uninstall hdf5 needed because of astropy, I believe
+&& conda clean --yes --all #&& conda uninstall hdf5 --yes
 if [ $? != 0 ]; then
     echo "ERROR installing conda packages; exiting"
     exit 1

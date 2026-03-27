@@ -42,9 +42,19 @@ def test_catalog():
         os.remove(fn)
 
 
+def test_misc():
+    from astropy.table import Table
+    import pymaster
+    import pyccl
+    import spt_candl_data
+    spt_candl_data.run_all_tests()
+    import orbax.checkpoint as ocp
+
+
 if __name__ == '__main__':
 
     dirname = Path('_tests')
     dirname.mkdir(exist_ok=True)
     test_h5py()
     test_catalog()
+    test_misc()

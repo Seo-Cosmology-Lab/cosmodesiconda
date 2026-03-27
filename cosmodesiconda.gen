@@ -30,7 +30,7 @@ if [ module-info mode load ] {
         }
     }
     foreach mod [list _UNLOADMODULES_] {
-        if { [string trim $mod] != "" } {
+        if { [string trim $mod] != "" && [is-loaded $mod] } {
             module unload $mod
         }
     }

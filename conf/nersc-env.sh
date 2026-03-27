@@ -11,9 +11,9 @@ export COSMOINSTALL="pip-pkgs.sh camb-pkgs.sh classy-pkgs.sh planck-pkgs.sh ners
 # darshan not necessary and suspected to generate overhead
 # altd not necessary and suspected to cause random job hangs
 # craype-hugepages2M https://docs.nersc.gov/development/languages/python/faq-troubleshooting
-export UNLOADMODULES=""
+export UNLOADMODULES="cray-hdf5"
 #export LOADMODULES="cudatoolkit/12.2 cudnn/8.9.3_cuda12 nccl/2.17.1-ofi cray-hdf5"
-export LOADMODULES="gcc-native/13.2 cray-hdf5-parallel cudatoolkit/12.9 craype-accel-nvidia80 cray-mpich"
+export LOADMODULES="gcc-native/14 cray-hdf5-parallel cudatoolkit/12.9 craype-accel-nvidia80 cray-mpich"
 export HOSTVARIABLE=NERSC_HOST
 
 export CC="gcc"

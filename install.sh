@@ -33,6 +33,7 @@ do
   module unload $MOD
 done
 unset PYTHONPATH
+export PYTHONNOUSERSITE=1
 
 for MOD in $(echo $LOADMODULES)
 do
@@ -117,7 +118,7 @@ sed -i 's@_PATH_@'"$EXPORTPATH"'@g' $MODULEFILE
 sed -i 's@_PYTHONPATH_@'"$EXPORTPYTHONPATH"'@g' $MODULEFILE
 sed -i 's@_LDLIBRARYPATH_@'"$EXPORTLDLIBRARYPATH"'@g' $MODULEFILE
 
-cp cosmodesiconda.modversion $MODULEDIR/.version_$DCONDAVERSION
+cp $topdir/cosmodesiconda.modversion $MODULEDIR/.version_$DCONDAVERSION
 
 if [ ! -z $GRP ] ; then
   chgrp -R $GRP $MODULEDIR

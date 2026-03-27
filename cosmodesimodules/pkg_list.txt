@@ -1,3 +1,6 @@
+desiwins @ https://github.com/domichbt/DESI_forward_window @ branches/main
+folpsD @ https://github.com/henoriega/FOLPSpipe @ branches/folpsD-jax-desilike
+desi-clustering @ https://github.com/cosmodesi/desi-clustering @ branches/main
 desiblind @ https://github.com/epaillas/desiblind @ branches/main
 jaxrecon @ https://github.com/adematti/jax-recon @ branches/main
 lsstypes @ https://github.com/adematti/lsstypes @ branches/main
@@ -18,7 +21,7 @@ velocileptors @ https://github.com/sfschen/velocileptors @ branches/master
 pybird @ https://github.com/pierrexyz/pybird @ branches/master
 folps @ https://github.com/henoriega/FOLPS-nu @ branches/main
 folpsax @ https://github.com/cosmodesi/folpsax @ branches/main
-desilike @ https://github.com/cosmodesi/desilike @ branches/lsstypes,branches/main
+desilike @ https://github.com/cosmodesi/desilike @ branches/dr2-dev,branches/lsstypes,branches/main
 desipipe @ https://github.com/cosmodesi/desipipe @ branches/main
 thecov @ https://github.com/cosmodesi/thecov @ branches/main
 desiutil @ https://github.com/desihub/desiutil @ branches/main
