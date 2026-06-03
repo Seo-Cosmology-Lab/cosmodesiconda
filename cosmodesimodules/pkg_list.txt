@@ -1,5 +1,5 @@
-desiwins @ https://github.com/domichbt/DESI_forward_window @ branches/main
-folpsD @ https://github.com/henoriega/FOLPSpipe @ branches/folpsD-jax-desilike
+desiwinds @ https://github.com/domichbt/DESI_forward_window @ branches/main
+folpsD @ https://github.com/cosmodesi/FolpsD @ branches/main
 desi-clustering @ https://github.com/cosmodesi/desi-clustering @ branches/main
 desiblind @ https://github.com/epaillas/desiblind @ branches/main
 jaxrecon @ https://github.com/adematti/jax-recon @ branches/main

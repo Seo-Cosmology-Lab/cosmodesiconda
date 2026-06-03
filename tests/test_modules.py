@@ -1,4 +1,5 @@
 import os
+import copy
 import numpy as np
 
 
@@ -197,46 +198,74 @@ def test_inference():
                           'latex': r'\Omega_{m}'},
               **{name: float(cosmo[name]) for name in ['omega_b', 'H0', 'A_s', 'n_s', 'tau_reio']}}
 
-    info = {'params': params,
+    info_ref = {'params': params,
             'likelihood': {'planck_2018_highl_plik.TTTEEE': None, 'sn.pantheon': None},
             'theory': {'classy': {'extra_args': {'m_ncdm': float(cosmo['m_ncdm'][0]), 'N_ncdm': int(cosmo['N_ncdm']), 'N_ur': int(cosmo['N_ur'])}}}}
 
     info_sampler = {'evaluate': {}}
+
     from cobaya.model import get_model
     from cobaya.sampler import get_sampler
 
+    info = copy.deepcopy(info_ref)
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     info['likelihood'] = {'planck_2018_highl_CamSpec2021.TTTEEE': None, 'planckpr4lensing.PlanckPR4Lensing': None}
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     info['likelihood'] = {'planck_NPIPE_highl_CamSpec.TTTEEE': None, 'planckpr4lensing.PlanckPR4LensingMarged': None}
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     info['likelihood'] = {'planck_NPIPE_highl_CamSpec.TEEE': None, 'planckpr4lensing.PlanckPR4LensingMarged': None}
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     info['likelihood'] = {'planck_2020_hillipop.TTTEEE': None, 'planckpr4lensing.PlanckPR4LensingMarged': None}
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     info['likelihood'] = {'act_dr6_lenslike.ACTDR6LensLike': {'lens_only': False, 'stop_at_error': True, 'lmax': 4000, 'variant': 'act_baseline'}}
     info['theory']['classy']['extra_args'].update({'modes': 's', 'output': 'tCl, pCl, lCl'})
     info['debug'] = True
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     #info['params']['yp2'] = {'prior': {'min': 0.5, 'max': 1.5}}  # for ACT
     info['likelihood'] = {'wmaplike.WMAPLike': None, 'spt3g_2020.TEEE': None}  # , 'pyactlike.ACTPol_lite_DR4': None theory deprecated
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
+    info = copy.deepcopy(info_ref)
     #info['params']['yp2'] = {'prior': {'min': 0.5, 'max': 1.5}}  # for ACT
     info['likelihood'] = {'wmaplike.WMAPLike': None, 'spt3g_2022.TTTEEE': None}
+    model = get_model(info)
+    get_sampler(info_sampler, model=model).run()
+
+    info = copy.deepcopy(info_ref)
+    info['likelihood'] = {'act_dr6_spt_lenslike.ACTDR6LensLike': {'lens_only': False, 'stop_at_error': True, 'lmax': 4000, 'variant': 'act_baseline'}}
+    info['theory']['classy']['extra_args'].update({'modes': 's', 'output': 'tCl, pCl, lCl'})
+    info['debug'] = True
+    model = get_model(info)
+    get_sampler(info_sampler, model=model).run()
+
+    info = copy.deepcopy(info_ref)
+    rename = {'ombh2': 'omega_b', 'As': 'A_s', 'ns': 'n_s', 'tau': 'tau_reio'}
+    info['params'] = {'omch2': {'prior': {'min': 0.01, 'max': 0.3},
+                          'ref': {'dist': 'norm', 'loc': 0.12, 'scale': 0.01},
+                          'latex': r'\omega_{cdm}'},
+              **{name: float(cosmo[rename.get(name, name)]) for name in ['ombh2', 'H0', 'As', 'ns', 'tau']}}
+    info['likelihood'] = {'elica': {}}
+    info['theory'] = {'camb': {'extra_args': {'lens_potential_accuracy': 1, 'nnu': 3.044, 'num_massive_neutrinos': 1}}}
+    info['debug'] = True
     model = get_model(info)
     get_sampler(info_sampler, model=model).run()
 
@@ -265,6 +294,7 @@ if __name__ == '__main__':
     from mockfactory import setup_logging
     setup_logging()
 
+    test_inference()
     test_cosmoprimo()
     test_pycorr()
     test_pypower()

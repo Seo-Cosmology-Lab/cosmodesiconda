@@ -65,8 +65,8 @@ prereq cosmodesiconda
 #
 
 # Main versions of most modules:
-module load folpsD/folpsD-jax-desilike
-module load desiwins/main
+module load folpsD/main
+module load desiwinds/main
 module load cosmoprimo/main
 module load desi-clustering/main
 module load desiblind/main

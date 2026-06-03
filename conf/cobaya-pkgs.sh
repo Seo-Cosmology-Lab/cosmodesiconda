@@ -38,6 +38,9 @@ git clone https://github.com/PolyChord/PolyChordLite.git
 rm -rf PolyChordLite
 #wget https://raw.githubusercontent.com/xgarrido/spt_likelihoods/master/examples/spt3g_example.yaml .
 #cobaya-run spt3g_example.yaml
+
+# ACT
+
 version='1.2'
 $PYTHON -m pip install --no-cache-dir act_dr6_lenslike==$version
 #$PYTHON -m pip install --no-cache-dir git+https://github.com/ACTCollaboration/act_dr6_lenslike
@@ -49,9 +52,6 @@ rm -rf $ACT_DIR/tmp-act.tgz
 ACT_SYMLINK=$(python -c "import os, act_dr6_lenslike; print(os.path.dirname(act_dr6_lenslike.__file__))")/data
 mkdir -p $ACT_SYMLINK
 ln -s $ACT_DIR/v$version $ACT_SYMLINK/v$version
-export ENVVARIABLES="$ENVVARIABLES COBAYA_STD_DIR $COBAYA_STD_DIR COBAYA_PACKAGES_PATH $COBAYA_PACKAGES_PATH COBAYA_USE_FILE_LOCKING F"
-rm -rf $COBAYA_PACKAGES_PATH/code/planck/clik-main
-ln -s $PLANCK_SRC_DIR/code/plc_3.0/plc-3.1 $COBAYA_PACKAGES_PATH/code/planck/clik-main  # installed by planck-pkgs.sh
 
 git clone https://github.com/ACTCollaboration/DR6-ACT-lite.git
 (cd DR6-ACT-lite && $PYTHON -m pip install .)
@@ -62,3 +62,20 @@ git clone https://github.com/ACTCollaboration/act_dr6_mflike
 (cd act_dr6_mflike && $PYTHON -m pip install .)
 cobaya-install act_dr6_mflike/examples/act_dr6_example.yml -p $COBAYA_PACKAGES_PATH --just-data
 rm -rf act_dr6_mflike
+
+$PYTHON -m pip install elica
+
+# SPT
+
+git clone https://github.com/qujia7/spt_act_likelihood.git
+(cd spt_act_likelihood && $PYTHON -m pip install .)
+rm -rf spt_act_likelihood
+ACT_SYMLINK=$(python -c "import os, act_dr6_spt_lenslike; print(os.path.dirname(act_dr6_spt_lenslike.__file__))")/data
+mkdir -p $ACT_SYMLINK
+ln -s $ACT_DIR/v$version/like_corrs $ACT_SYMLINK/v1.2/like_corrs
+
+# Environment variables
+
+export ENVVARIABLES="$ENVVARIABLES COBAYA_STD_DIR $COBAYA_STD_DIR COBAYA_PACKAGES_PATH $COBAYA_PACKAGES_PATH COBAYA_USE_FILE_LOCKING F"
+rm -rf $COBAYA_PACKAGES_PATH/code/planck/clik-main
+ln -s $PLANCK_SRC_DIR/code/plc_3.0/plc-3.1 $COBAYA_PACKAGES_PATH/code/planck/clik-main  # installed by planck-pkgs.sh

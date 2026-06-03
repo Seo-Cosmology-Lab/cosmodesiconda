@@ -61,6 +61,7 @@ $PYTHON -m pip install tables
 # Just for docs
 $PYTHON -m pip install sphinx sphinx-rtd-theme
 $PYTHON -m pip install ipympl
+$PYTHON -m pip install cupy-cuda12X  # for Roger
 
 
 if [ $? != 0 ]; then
