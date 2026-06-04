@@ -29,7 +29,6 @@ conda install --copy --yes -c conda-forge \
     tabulate \
     pyccl \
     namaster \
-# && conda install --copy --yes -c bccp nbodykit \
 && mplrc="$CONDADIR/lib/python$PYVERSION/site-packages/matplotlib/mpl-data/matplotlibrc"; \
     cat ${mplrc} | sed -e "s#^backend.*#backend : TkAgg#" > ${mplrc}.tmp; \
     mv ${mplrc}.tmp ${mplrc} \
