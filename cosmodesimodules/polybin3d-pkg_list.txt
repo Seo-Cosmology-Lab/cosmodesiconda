@@ -8,4 +8,4 @@ mockfactory @ https://github.com/cosmodesi/mockfactory @ branches/main
 sysnet @ https://github.com/mehdirezaie/sysnetdev @ branches/master
 desipipe @ https://github.com/cosmodesi/desipipe @ branches/main
 PolyBin3D @ https://github.com/Seo-Cosmology-Lab/PolyBin3D @ branches/main
-nbodykit @ http://github.com/bccp/nbodykit @ branches/master
+#nbodykit @ http://github.com/bccp/nbodykit @ branches/master
