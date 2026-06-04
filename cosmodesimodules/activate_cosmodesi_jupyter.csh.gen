@@ -13,7 +13,7 @@
 #   "main",
 #   "{connection_file}"
 #   ],
-# "display_name": "cosmodesi-main"
+# "display_name": "seo-clab-main"
 # }
 
 set version = $1
