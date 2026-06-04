@@ -24,3 +24,8 @@ for script in $scripts ; do
     sed -i 's@_ROOTDIRHOST_@'"$COSMODESIROOTHOSTBASH"'@g' $MODULEDIR/$script
     ln -sf $MODULEDIR/$script $COSMODESIROOT/$script
 done
+
+if [ ! -z $GRP ] ; then
+  chgrp -R $GRP $MODULEDIR
+fi
+chmod -R u=rwX,g=rX,o-rwx $MODULEDIR
