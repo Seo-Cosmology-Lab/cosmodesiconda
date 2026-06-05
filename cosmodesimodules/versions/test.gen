@@ -88,11 +88,13 @@ module load velocileptors/master
 module load pybird/master
 module load folps/main
 module load folpsax/main
-module load desilike/lsstypes
+#module load desilike/lsstypes
+#module load desilike/dr2-dev
+module load desilike/main
 module load desipipe/main
 module load thecov/main
 module load desiutil/main
-module load desitarget/main
+#module load desitarget/main
 module load desimodel/main
 module load desimeter/main
 module load fiberassign/main
