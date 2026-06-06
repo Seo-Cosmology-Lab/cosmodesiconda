@@ -1,7 +1,7 @@
 #export MINICONDA=https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 # miniforge solves fast and works well with conda-forge
-# export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/25.3.0-1/Miniforge3-$(uname)-$(uname -m).sh # for python 3.12
-export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/24.1.2-0/Miniforge3-$(uname)-$(uname -m).sh  # for python 3.10
+export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/25.3.0-1/Miniforge3-$(uname)-$(uname -m).sh # for python 3.12
+# export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/24.1.2-0/Miniforge3-$(uname)-$(uname -m).sh  # for python 3.10
 # export MINICONDA=https://github.com/conda-forge/miniforge/releases/download/23.11.0-0/Miniforge3-$(uname)-$(uname -m).sh # for python 3.8
 export GRP=desi
 export PRGENVS="PrgEnv-gnu PrgEnv-intel PrgEnv-cray PrgEnv-nvidia"
