@@ -3,7 +3,7 @@
 # This script is intended to be called from a jupyter kernel.json file
 # with the desimodules version number and a "connection_file" parameter
 # provided by jupyter, e.g. via a file like:
-# $HOME/.local/share/jupyter/kernels/cosmodesi-main/kernel.json
+# $HOME/.local/share/jupyter/kernels/seo-clab-main/kernel.json
 #
 
 # {
