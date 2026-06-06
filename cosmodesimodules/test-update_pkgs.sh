@@ -23,7 +23,7 @@ if [[ $update_list_exists == "n" ]] ; then
                 echo "$pkg @ $url @ $version" >> $update_list
             fi
         done
-    done < $script_dir/polybin3d-pkg_list.txt
+    done < $script_dir/test-pkg_list.txt
 fi
 
 $script_dir/install_pkgs.sh $update_list --force
