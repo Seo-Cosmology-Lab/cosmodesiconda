@@ -125,6 +125,8 @@ $PYTHON -m pip install sphinx sphinx-rtd-theme
 $PYTHON -m pip install ipympl
 $PYTHON -m pip install cupy-cuda12X  # for Roger
 
+$PYTHON -m pip install --upgrade "astropy>=7.0" # bring back astropy to a version compatible with numpy>2.0 
+
 if [ $? != 0 ]; then
     echo "ERROR installing pip packages; exiting"
     exit 1
