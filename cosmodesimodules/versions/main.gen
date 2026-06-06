@@ -68,7 +68,7 @@ prereq cosmodesiconda
 module load folpsD/main
 module load desiwinds/main
 module load cosmoprimo/main
-module load desi-clustering/main
+module load desi_clustering/main
 module load desiblind/main
 module load jaxrecon/main
 module load jaxpower/main
@@ -88,14 +88,17 @@ module load velocileptors/master
 module load pybird/master
 module load folps/main
 module load folpsax/main
-module load desilike/lsstypes
+#module load desilike/lsstypes
+#module load desilike/dr2-dev
+module load desilike/main
 module load desipipe/main
 module load thecov/main
 module load desiutil/main
-module load desitarget/main
+#module load desitarget/main
 module load desimodel/main
 module load desimeter/main
 module load fiberassign/main
+module load PolyBin3D/numpy-2.0-dev
 
 # may solve some OpenMP instabilities at NERSC
 if { [info exists env(NERSC_HOST)] } {
