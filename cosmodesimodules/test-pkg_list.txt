@@ -29,4 +29,4 @@ desitarget @ https://github.com/desihub/desitarget @ branches/main
 desimodel @ https://github.com/desihub/desimodel @ branches/main
 desimeter @ https://github.com/desihub/desimeter @ branches/main
 fiberassign @ https://github.com/desihub/fiberassign @ branches/main
-PolyBin3D @ https://github.com/Seo-Cosmology-Lab/PolyBin3D @ branches/main
+PolyBin3D @ https://github.com/Seo-Cosmology-Lab/PolyBin3D @ branches/main,branches/numpy-2.0-dev
